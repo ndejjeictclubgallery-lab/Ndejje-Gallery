@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ndejjean Gallery-Home</title>
+    <link rel="icon" href="../media/images/Gallery Logo/Favicon Gallery.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind v4 Play CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-ndejje-blue: #001f3f;
+            --color-ndejje-cream: #f5f5dc;
+            --color-ndejje-gold: #ffd700;
+            --color-ndejje-green: #008000;
+        }
+
+        body {
+            background-color: var(--color-ndejje-cream);
+            color: var(--color-ndejje-blue);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .cubes-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes spin-slow-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+        .animate-spin-slow-reverse {
+            animation: spin-slow-reverse 15s linear infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#f5f5dc] text-[#001f3f] font-sans selection:bg-[#ffd700] selection:text-[#001f3f] overflow-x-hidden">
+    <!-- Motion Background -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,31,63,0.05)_0%,transparent_70%)]"></div>
+        <div class="absolute inset-0 cubes-pattern opacity-5"></div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#001f3f]/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 lg:hidden translate-x-full transition-transform duration-500 ease-in-out">
+        <button id="close-menu" class="absolute top-6 right-6 text-[#ffd700] p-2 hover:text-[#008000] transition-colors">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <div class="flex flex-col gap-4 mb-6 pb-6 border-b border-white/10 w-full px-12 text-center">
+            <a href="gallery.html" class="text-[#ffd700] font-black uppercase tracking-widest text-sm">Gallery</a>
+            <a href="https://ndejjean-connect.onrender.com/" class="text-[#ffd700] font-black uppercase tracking-widest text-sm">Blog</a>
+            <a href="about.html" class="text-[#ffd700] font-black uppercase tracking-widest text-sm">About</a>
+        </div>
+        <a href="#houses" class="mobile-nav-link text-white hover:text-[#ffd700] font-black uppercase tracking-widest text-2xl transition-colors">Houses</a>
+        <a href="#sports" class="mobile-nav-link text-white hover:text-[#ffd700] font-black uppercase tracking-widest text-2xl transition-colors">Sports</a>
+        <a href="#clubs" class="mobile-nav-link text-white hover:text-[#ffd700] font-black uppercase tracking-widest text-2xl transition-colors">Clubs</a>
+        <a href="#location" class="mobile-nav-link text-white hover:text-[#ffd700] font-black uppercase tracking-widest text-2xl transition-colors">Location</a>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="hidden sm:flex bg-[#001f3f] text-white/80 py-2 px-6 md:px-12 justify-end items-center text-[10px] md:text-xs font-bold uppercase tracking-widest border-b border-white/5 relative z-[60]">
+        <div class="flex gap-4 sm:gap-8">
+            <a href="gallery.html" class="hover:text-[#ffd700] transition-colors">Gallery</a>
+            <a href="https://ndejjean-connect.onrender.com/" class="hover:text-[#ffd700] transition-colors">Blog</a>
+            <a href="about.html" class="hover:text-[#ffd700] transition-colors">About</a>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="sticky top-0 z-50 bg-[#001f3f] text-white py-4 px-6 md:px-12 flex justify-between items-center shadow-2xl border-b border-[#ffd700]/20 overflow-hidden">
+        <div class="absolute inset-0 z-[-1] opacity-30">
+            <video autoPlay muted loop playsInline class="w-full h-full object-cover">
+                <source src="../media/images/Web Pics & Videos/header.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="flex items-center gap-3 relative z-10">
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-[#ffd700] rounded-full flex items-center justify-center p-1 shadow-lg animate-spin-slow">
+                <img src="../media/images/Gallery Logo/Gallery Logo.png" alt="Logo" class="rounded-full">
+            </div>
+            <h1 class="text-lg md:text-2xl font-black tracking-tighter text-[#ffd700] drop-shadow-md">NDEJJEAN GALLERY</h1>
+        </div>
+        
+        <nav class="hidden lg:flex gap-8 text-sm font-bold uppercase tracking-widest relative z-10">
+            <a href="#about" class="hover:text-[#008000] transition-all duration-300 hover:tracking-widest">About</a>
+            <a href="#houses" class="hover:text-[#008000] transition-all duration-300 hover:tracking-widest">Houses</a>
+            <a href="#sports" class="hover:text-[#008000] transition-all duration-300 hover:tracking-widest">Sports</a>
+            <a href="#clubs" class="hover:text-[#008000] transition-all duration-300 hover:tracking-widest">Clubs</a>
+            <a href="#location" class="hover:text-[#008000] transition-all duration-300 hover:tracking-widest">Location</a>
+        </nav>
+
+        <div class="flex items-center gap-4 relative z-10">
+            <button id="open-menu" class="lg:hidden text-[#ffd700] p-2 hover:text-[#008000] transition-colors">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[80vh] flex flex-col items-center justify-center text-center bg-[#001f3f] text-white px-6 overflow-hidden">
+            <div class="absolute inset-0 z-0 opacity-40">
+                <video autoPlay muted loop playsInline class="w-full h-full object-cover">
+                    <source src="../media/images/Web Pics & Videos/header.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div class="relative z-10">
+                <h2 class="text-6xl md:text-8xl font-black mb-6 tracking-tight">THEE <span class="text-[#ffd700]">NDEJJEAN</span> GALLERY</h2>
+                <p class="max-w-2xl text-lg opacity-80 mb-10 leading-relaxed mx-auto">Celebrating decades of excellence, tradition, and the vibrant life of Ndejje Senior Secondary School.</p>
+                <a href="#about" class="inline-block bg-[#ffd700] text-[#001f3f] px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#008000] hover:text-white transition-all shadow-lg transform hover:scale-105 active:scale-95">
+                    Explore The Site
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 px-6 md:px-12 lg:px-24 bg-white/50 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h3 class="text-4xl font-bold mb-8 border-l-4 border-[#ffd700] pl-6">Our Foundation</h3>
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-xl font-bold text-[#ffd700] uppercase tracking-wider mb-2">Vision</h4>
+                            <p class="text-lg italic">"A Christ - centered school nurturing holistically competent citizens for development and prosperity."</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-[#ffd700] uppercase tracking-wider mb-2">Mission</h4>
+                            <p class="text-lg">"To nurture highly knowledgeable and productive citizens through a holistic education based on christianity values for socio-economic transformation."</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-[#ffd700] uppercase tracking-wider mb-2">Core Values</h4>
+                            <ul class="grid grid-cols-2 gap-2 font-semibold">
+                                <li>• Time management</li>
+                                <li>• Patriotism</li>
+                                <li>• Excellence</li>
+                                <li>• Discipline</li>
+                                <li>• Godliness</li>
+                                <li>• Integrity</li>
+                                <li>• Hardwork</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="../media/images/Web Pics & Videos/History.jfif" alt="School" class="rounded-2xl shadow-2xl border-8 border-white">
+                    <div class="absolute -bottom-6 -right-6 bg-[#001f3f] text-white p-8 rounded-2xl shadow-xl max-w-xs">
+                        <p class="text-sm font-medium">Ndejje SSS is more than just a school; it's a legacy of transformation and growth since its inception.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Houses Section -->
+        <section id="houses" class="py-24 px-6 md:px-12 lg:px-24 bg-[#001f3f] text-white">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-4xl font-bold mb-12 text-center">School Houses</h3>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl relative group">
+                        <video autoPlay muted loop playsinline class="w-full h-full object-cover">
+                            <source src="../media/images/Web Pics & Videos/Houses.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-[#001f3f]/40 group-hover:bg-transparent transition-all pointer-events-none"></div>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h4 class="text-3xl font-bold mb-6 text-[#ffd700]">The Competitive Spirit</h4>
+                        <p class="text-lg mb-8 opacity-80">Our houses are the heartbeat of school competition, fostering teamwork and leadership through sports, academics, and arts.</p>
+                        <a href="house.html" class="flex items-center gap-2 text-[#ffd700] hover:text-[#008000] font-bold transition-all group">
+                            Visit the Houses <i data-lucide="external-link" class="group-hover:translate-x-1 transition-transform w-4.5 h-4.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sports Section -->
+        <section id="sports" class="py-24 px-6 md:px-12 lg:px-24">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-4xl font-bold mb-12 text-center">Sports Excellence</h3>
+                <div class="grid md:grid-cols-2 gap-12 flex-row-reverse">
+                    <div class="flex flex-col justify-center order-2 md:order-1">
+                        <h4 class="text-3xl font-bold mb-6 text-[#001f3f]">Champions on the Field</h4>
+                        <p class="text-lg mb-8 opacity-80 text-[#001f3f]">From football to athletics, Ndejjeans dominate the regional and national sports arenas with unmatched vigor and talent.</p>
+                        <a href="sports.html" target="_blank" class="flex items-center gap-2 text-[#001f3f] hover:text-[#008000] font-bold transition-all group">
+                            Visit the Sports Website <i data-lucide="external-link" class="group-hover:translate-x-1 transition-transform w-4.5 h-4.5"></i>
+                        </a>
+                    </div>
+                    <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl order-1 md:order-2">
+                        <video autoPlay muted loop playsinline class="w-full h-full object-cover">
+                            <source src="../media/images/Web Pics & Videos/Sports.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clubs Section -->
+        <section id="clubs" class="py-24 px-6 md:px-12 lg:px-24 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold mb-4 text-[#001f3f]">Our Vibrant Clubs</h3>
+                    <p class="text-[#001f3f]/60">Specialized clubs nurturing diverse talents and interests.</p>
+                </div>
+                <div id="clubs-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Club Cards will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Us CTA -->
+        <section class="py-24 px-6 md:px-12 lg:px-24 bg-[#001f3f] text-white overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+                <div class="w-[800px] h-[800px] border-[40px] border-[#ffd700] rounded-full -mr-96 -mt-40 animate-spin-slow"></div>
+            </div>
+            <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="max-w-xl text-center md:text-left">
+                    <h3 class="text-5xl font-black mb-6 leading-tight">BECOME A <span class="text-[#ffd700]">NDEJJEAN</span> TODAY</h3>
+                    <p class="text-xl opacity-80 mb-10">Join a community of scholars, leaders, and innovators. Your journey to excellence starts here.</p>
+                    <a href="https://ndejjesss.ac.ug/apply-online/" target="_blank" class="inline-flex items-center gap-3 bg-[#ffd700] text-[#001f3f] px-12 py-5 rounded-full font-black uppercase tracking-widest hover:bg-[#008000] hover:text-white transition-all shadow-2xl transform hover:scale-105 active:scale-95">
+                        Register Now <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+                <div class="w-64 h-64 md:w-96 md:h-96 bg-[#ffd700] rounded-full p-4 shadow-[0_0_100px_rgba(255,215,0,0.3)] cursor-pointer animate-spin-slow-reverse">
+                    <div class="w-full h-full bg-[#001f3f] rounded-full flex items-center justify-center p-8 border-8 border-white/20">
+                        <img src="../media/images/Gallery Logo/Gallery Logo.png" alt="Ndejje Seal" class="rounded-full opacity-90">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="py-24 px-6 md:px-12 lg:px-24 bg-[#f5f5dc]">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-4xl font-bold mb-12 text-center">Find Us</h3>
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-white h-[500px] relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.44524458525!2d32.47644531475355!3d0.613333399552485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177db79361666667%3A0x7f4a5f6e6e6e6e6e!2sNdejje%20Senior%20Secondary%20School!5e0!3m2!1sen!2sug!4v1620000000000!5m2!1sen!2sug" 
+                        width="100%" 
+                        height="100%" 
+                        style="border: 0" 
+                        allowFullScreen 
+                        loading="lazy" 
+                    ></iframe>
+                    <div class="absolute bottom-8 left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs">
+                        <div class="flex items-center gap-3 mb-2 text-[#001f3f]">
+                            <i data-lucide="map-pin" class="text-[#ffd700] w-5 h-5"></i>
+                            <span class="font-bold">Ndejje, Luweero</span>
+                        </div>
+                        <p class="text-sm text-[#001f3f]/60">Located in the heart of Luweero District, Uganda. A serene environment perfect for academic excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#001f3f] text-white py-12 px-6 md:px-12 lg:px-24 border-t border-[#ffd700]/20">
+        <div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-8">
+            <div class="flex gap-8">
+                <a href="https://facebook.com/ndejjesss" target="_blank" class="text-[#ffd700] hover:text-[#008000] transition-colors transform hover:scale-125">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+                <a href="https://instagram.com/ndejjesss" target="_blank" class="text-[#ffd700] hover:text-[#008000] transition-colors transform hover:scale-125">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/ndejjesss" target="_blank" class="text-[#ffd700] hover:text-[#008000] transition-colors transform hover:scale-125">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+                    </svg>
+                </a>
+                <a href="https://youtube.com/@ndejjesss" target="_blank" class="text-[#ffd700] hover:text-[#008000] transition-colors transform hover:scale-125">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/school/ndejjesss" target="_blank" class="text-[#ffd700] hover:text-[#008000] transition-colors transform hover:scale-125">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="mailto:info@ndejjesss.ac.ug" class="text-[#ffd700] hover:text-[#008000] transition-colors transform hover:scale-125">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="pt-8 border-t border-white/10 w-full text-center text-xs opacity-40 tracking-widest uppercase">
+                &copy; <span id="year"></span> ICT CLUB Ndejje Senior Secondary School 2025-2026. All Rights Reserved.
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openMenuBtn = document.getElementById('open-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMenu = (open) => {
+            if (open) {
+                mobileMenu.classList.remove('translate-x-full');
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+            }
+        };
+
+        openMenuBtn.addEventListener('click', () => toggleMenu(true));
+        closeMenuBtn.addEventListener('click', () => toggleMenu(false));
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Club Data (JSON merged into JS)
+        const CLUBS = [
+            { name: 'Clubs Forum', logo: '../media/images/Club Logos/Club_s Forum.jpg', motto: 'Voice Your Ideas' },
+            { name: 'ICT Club', logo: '../media/images/Club Logos/ICT.png', motto: 'We Code The Future' },
+            { name: 'Debate Club', logo: '../media/images/Club Logos/Debate Club.png', motto: 'Titans of Talk' },
+            { name: 'Music Dance and Drama club', logo: '../media/images/Club Logos/MDD Club.jfif', motto: 'Let Your Talent Shine' },
+            { name: 'Men Of Valor Club', logo: '../media/images/Club Logos/MOV Club.jfif', motto: 'To Save The Lost, To Sanctify The Saved' },
+            { name: 'Women Of Purpose International', logo: '../media/images/Club Logos/WOPI Club.jfif', motto: 'Together As One' },
+            { name: 'Interact Club', logo: '../media/images/Club Logos/Interact Club.png', motto: '.Service Above Self' },
+            { name: 'Chess Club', logo: '../media/images/Club Logos/Chess Club.jpg', motto: 'The Game Of Intellects' },
+            { name: 'Wildlife', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'Its Only One Earth, Protect It' },
+            { name: 'Economics Clubs', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'Ceteris Paribus' },
+            { name: 'Entrepreneurship Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'Where Big Ideas Meet Bold Actions' },
+            { name: 'Writers Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'From Ink Came Power' },
+            { name: 'Geography Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'Environment Is Our Priority' },
+            { name: 'Math Club', logo: '../media/images/Club Logos/Math Club.jfif', motto: 'Aces Of Calculus' },
+            { name: 'Art Club', logo: '../media/images/Club Logos/Art Club.jpg', motto: 'Elevating Talent' },
+            { name: 'French Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: '.L amour Et Partnitle' },
+            { name: 'Junior Achievers Club', logo: '../media/images/Club Logos/JA Club.jpg', motto: 'Inspiring Youth' },
+            { name: 'Educate Club', logo: '../media/images/Club Logos/Educate Club.png', motto: 'Educating Lives' },
+            { name: 'Redcross Club', logo: '../media/images/Club Logos/RedCross Club.jpg', motto: 'The Power of Humanity' },
+            { name: 'Patriotism Club', logo: '../media/images/Club Logos/patriotism club.png', motto: 'Love, Unity and Service' },
+            { name: 'Scouts Club', logo: '../media/images/Club Logos/Scouts Club.webp', motto: 'Be Prepared' },
+            { name: 'Nkobazambogo Club', logo: '../media/images/Club Logos/Nkobazambogo Club.png', motto: 'Agal Ewamo Gegalum Enyama' },
+            { name: 'Physics And Astronomy Club', logo: '../media/images/Club Logos/Physics Club.jpg', motto: 'From Thinking Came Innovation' },
+            { name: 'Cafe Scientifique', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'For The Love Of Science' },
+            { name: 'Chinese Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: '飞得高并且冷静' },
+            { name: 'Kiswahili Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'Kiswahili Chako Fursa Yako' },
+            { name: 'Food and Nutrition Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'Eat Smart, Live Strong' },
+            { name: 'Agricultural Club', logo: 'https://pictures.placeit.net/i/placeit-avatar-placeholder-1.3.png', motto: 'Grow Green, Live GREEN' }
+        ];
+
+        const clubsGrid = document.getElementById('clubs-grid');
+        CLUBS.forEach(club => {
+            const card = document.createElement('div');
+            card.className = "bg-[#f5f5dc] rounded-[3rem] p-10 shadow-2xl border border-[#001f3f]/5 flex flex-col items-center text-center transition-all duration-500 transform hover:-translate-y-4 group";
+            card.innerHTML = `
+                <div class="w-48 h-48 md:w-56 md:h-56 bg-white rounded-[2.5rem] shadow-2xl flex items-center justify-center p-6 mb-8 border-4 border-[#ffd700]/30 relative overflow-hidden group-hover:border-[#008000]/50 transition-colors duration-500">
+                    <img src="${club.logo}" alt="${club.name} Logo" class="rounded-3xl w-full h-full object-cover z-10 transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#ffd700]/20 to-transparent opacity-50 animate-spin-slow"></div>
+                </div>
+                <h4 class="text-2xl font-black mb-4 text-[#001f3f] group-hover:text-[#008000] transition-colors duration-300">${club.name}</h4>
+                <div class="w-full h-12 relative overflow-hidden bg-[#001f3f]/5 rounded-xl flex items-center mb-4">
+                    <div class="animate-marquee whitespace-nowrap text-sm italic text-[#008000] font-bold px-4">
+                        ${club.motto}
+                    </div>
+                </div>
+                <p class="text-xs font-black uppercase tracking-widest transition-colors duration-300 opacity-60 group-hover:opacity-100 group-hover:text-[#008000]">
+                    Thee Ndejjean Gallery
+                </p>
+            `;
+            clubsGrid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
